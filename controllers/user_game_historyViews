@@ -1,0 +1,92 @@
+const { user_game_history } = require("../models");
+const moment = require('moment')
+const bcrypt = require('bcrypt')
+
+module.exports = {
+    getAllViews: (req, res) => {
+        user_game_history.findAll()
+        .then((result) => {
+            if (result.length > 0){
+                res.render('usergameshistory/index', { usergameshistory: result, moment})
+            }else{
+                res.render('usergameshistory/index', { usergameshistory: result, moment})
+            }
+            // res.status(200).json({ message: "Success", usergame }) 
+        })
+        .catch((err) => {
+          console.log(err);
+          res.render('error', { status: res.status(500), err: err.message})
+        });
+    },
+    getIdViews: (req, res) => {
+        user_game_history.findOne({ where: { id: req.params.id } })
+        .then((result) => {
+            if (result) {
+                // res.status(200).json({ message: "Success", usergame })
+                res.render('usergameshistory/update', { usergamehistory: result})
+              } else {
+                // res.status(404).json({ message: 'User Game Tidak di temukan', usergame });
+                res.render('error', { status: res.status(404), err: 'Data tidak ditemukan'})
+              }
+        })
+        .catch((err) => {
+        res.render('error', { status: res.status(500), err: err.message})
+    });
+    },
+    createFormPostViews: (req, res) => {
+        res.render('usergameshistory/create')
+    },
+    PostViews: (req, res) => {
+        user_game_history.create({
+            id_pengguna: req.body.id_pengguna,
+            menang: req.body.menang,
+            kalah: req.body.kalah,
+            tanggal_history: req.body.tanggal_history,
+            // foto: req.files[0].filename,
+            video: req.files[0].filename,
+        })
+        .then((result) => {
+            res.redirect('/view/usergameshistory')
+          })
+            // .catch((err) => res.status(422).json("Can't create usergame"))
+            .catch((err) => {
+            res.render('error', { status: res.status(500), err: err.message})
+          })
+    },
+    PutViews: (req, res) => {
+        const {  menang, kalah, tanggal_history, } = req.body;
+        user_game_history.update({
+            menang,
+            kalah,
+            tanggal_history,
+            // foto: req.files[0].filename,
+            video: req.files[0].filename,
+        },
+        {
+            where: { id: req.params.id},
+        })
+        .then((result) => {
+            if (result[0] === 0){
+                res.render('error', {status: res.status(404), err: 'Data tidak ditemukan'})
+            }else{
+                res.redirect('/view/usergameshistory')
+            }
+          })
+        .catch((err) => {
+            res.render('error', { status: res.status(500), err: err.message })
+        })
+    },
+    DeleteViews: (req, res) => {
+        user_game_history.destroy({ where: { id: req.params.id } })
+        .then((result) => {
+            if (result[0] === 0){
+                res.render('error', {status: res.status(404), err: 'Data tidak ditemukan'})
+            }else{
+                res.redirect('/view/usergameshistory')
+            }
+          })
+        .catch((err) => {
+            res.render('error', { status: res.status(500), err: err.message })
+        })
+    },
+}

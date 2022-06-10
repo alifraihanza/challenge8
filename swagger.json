@@ -1,0 +1,882 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+    "version": "1.0.0",
+    "title": "Swagger Petstore",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "user game",
+      "description": "Everything about your user game"
+    },
+    {
+      "name": "user game biodata",
+      "description": "Access to user game biodata"
+    },
+    {
+      "name": "user game history",
+      "description": "Operations about user game history"
+    },
+    {
+      "name": "authentication",
+      "description": "Operations about authentication"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "paths": {
+    "/usergameapi": {
+      "get": {
+        "tags": [
+          "user game"
+        ],
+        "summary": "Returns pet inventories by status",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user game"
+        ],
+        "summary": "Add a new user game",
+        "description": "",
+        "operationId": "idPengguna",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "user game",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usergame"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/usergameapi/{id}": {
+      "put": {
+        "tags": [
+          "user game"
+        ],
+        "summary": "Update an existing user game",
+        "description": "",
+        "operationId": "updatePengguna",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id that need to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usergame"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "user game not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/usergame/{id}": {
+      "get": {
+        "tags": [
+          "user game"
+        ],
+        "summary": "Finds user game by tags",
+        "description": "Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+        "operationId": "findusergameByTags",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Tags to filter by",
+            "required": true,
+            "type": "integer",
+            "collectionFormat": "multi",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/usergame"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user game"
+        ],
+        "summary": "Deletes a user game",
+        "description": "",
+        "operationId": "idPengguna",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user game id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "user game not found"
+          }
+        }
+      }
+    
+    },
+    "/usergamebiodataapi": {
+      "get": {
+        "tags": [
+          "user game biodata"
+        ],
+        "summary": "Returns user game biodata inventories by status",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user game biodata"
+        ],
+        "summary": "Add a new user game biodata",
+        "description": "",
+        "operationId": "id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "user game biodata",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usergamebiodata"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/usergamebiodataapi/{id}": {
+      "put": {
+        "tags": [
+          "user game biodata" 
+        ],
+        "summary": "Update an existing user game biodata", 
+        "description": "",
+        "operationId": "updatePengguna",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Id that need to be updated",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usergamebiodata" 
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "user game not biodata found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/usergamebiodata/{id}": {
+      "get": {
+        "tags": [
+          "user game biodata"
+        ],
+        "summary": "Finds user game by tags",
+        "description": "Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.",
+        "operationId": "findusergameByTags",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Tags to filter by",
+            "required": true,
+            "type": "integer",
+            "collectionFormat": "multi",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/usergamebiodata"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user game biodata"
+        ],
+        "summary": "Deletes a user game biodata",
+        "description": "",
+        "operationId": "id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user game biodata id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "user game biodata not found"
+          }
+        }
+      }
+    
+    },
+    "/usergamehistoryapi": {
+      "get": {
+        "tags": [
+          "user game history"
+        ],
+        "summary": "Returns user game history inventories by status",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user game history"
+        ],
+        "summary": "Add a new user game history",
+        "description": "",
+        "operationId": "id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "user game history",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usergamehistory"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/usergamehistoryapi/{id}": {
+      "put": {
+        "tags": [
+          "user game history" 
+        ],
+        "summary": "Update an existing user game history", 
+        "description": "",
+        "operationId": "updatePengguna",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Id that need to be updated",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usergamehistory" 
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "user game not history found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    
+    },
+    "/usergamehistory/{id}": {
+      "get": {
+        "tags": [
+          "user game history"
+        ],
+        "summary": "Finds user game history by tags",
+        "description": "Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.",
+        "operationId": "findusergameByTags",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Tags to filter by",
+            "required": true,
+            "type": "integer",
+            "collectionFormat": "multi",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/usergamehistory"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user game history"
+        ],
+        "summary": "Deletes a user game history",
+        "description": "",
+        "operationId": "id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user game history id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "user game biodata not found"
+          }
+        }
+      }
+    
+    },
+    "/api/register": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Add a new authentication",
+        "description": "",
+        "operationId": "register",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "authentication",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/register"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Valid"
+          }
+        }
+      }
+    },
+    "/api/loginAPI": {
+      "post": {
+        "tags": [
+          "loginAPI"
+        ],
+        "summary": "Add a new loginAPI",
+        "description": "",
+        "operationId": "loginAPI",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "loginAPI",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loginAPI"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Valid"
+          }
+        }
+      }
+    },
+    "/api/lupaKatasandi": {
+      "post": {
+        "tags": [
+          "lupaKatasandi"
+        ],
+        "summary": "lupaKatasandi",
+        "description": "",
+        "operationId": "lupaKatasandi",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "lupaKatasandi",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/lupaKatasandi"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Valid"
+          }
+        }
+      }
+    },
+    "/api/verifikasi": {
+      "post": {
+        "tags": [
+          "verifikasi"
+        ],
+        "summary": "verifikasi",
+        "description": "",
+        "operationId": "verifikasi",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "verifikasi",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifikasi"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Valid"
+          }
+        }
+      }
+    },
+    "/api/gantiKatasandi": {
+      "post": {
+        "tags": [
+          "gantiKatasandi"
+        ],
+        "summary": "gantiKatasandi",
+        "description": "",
+        "operationId": "gantiKatasandi",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "gantiKatasandi",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/gantiKatasandi"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Valid"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "usergame": {
+      "type": "object",
+      "properties": {
+        "nama_pengguna": {
+          "type": "string",
+          "example": "Alif"
+        },
+        "email": {
+          "type": "string",
+          "example": "alifraihanzaa@gmail.com"
+        },
+        "kata_sandi": {
+          "type": "string",
+          "example": "alif123"
+        },
+        "role_id": {
+          "type": "string",
+          "example": "2"
+        }
+      }
+    },
+    "usergamebiodata": {
+      "type": "object",
+      "properties": {
+        "id_pengguna": {
+          "type": "integer",
+          "example": "123"
+        },
+        "nama": {
+          "type": "string",
+          "example":"dika12"
+        },
+        "tanggal_lahir": {
+          "type": "date",
+          "example": "2001:01:01"
+        },
+        "umur": {
+          "type": "integer",
+          "example": "123"
+        },
+        "jenis_kelamin": {
+          "type": "integer",
+          "example": "123"
+        }
+      }
+    },
+    "usergamehistory": {
+      "type": "object",
+      "properties": {
+        "id_pengguna": {
+          "type": "integer",
+          "example": "123"
+        },  
+        "menang": {
+          "type": "string",
+          "example": "123"
+        },
+        "kalah": {
+          "type": "string",
+          "example": "123"
+        },
+        "tanggal_history": {
+          "type": "date",
+          "example": "2022:12:01"
+        },
+        "video": {
+          "type": "file",
+          "example": "mp4"
+        }
+      }
+    },
+    "register": {
+      "type": "object",
+      "properties": {
+        "nama_pengguna": {
+          "type": "string",
+          "example": "huft"
+        },  
+        "email": {
+          "type": "string",
+          "example": "alifraihanzaa@gmail.com"
+        },
+        "kata_sandi": {
+          "type": "string",
+          "example": "123"
+        },
+        "role_id": {
+          "type": "string",
+          "example": "1"
+        }
+      }
+    },
+    "loginAPI": {
+      "type": "object",
+      "properties": {
+        "nama_pengguna": {
+          "type": "string",
+          "example": "aku"
+        },  
+        "kata_sandi": {
+          "type": "string",
+          "example": "mau"
+        }
+      }
+    },
+    "lupaKatasadi": {
+      "type": "object",
+      "properties": { 
+        "email": {
+          "type": "string",
+          "example": "alifraihanzaa@gmail.com"
+        }
+      }
+    },
+    "verifikasi": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "alifraihanzaa@gmail.com"
+        },  
+        "otp": {
+          "type": "string",
+          "example": "0005"
+        }
+      }
+    },
+    "gantiKatasandi": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "1"
+        },  
+        "kata_sandi": {
+          "type": "string",
+          "example": "alif234"
+        }
+      }
+    }
+    
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

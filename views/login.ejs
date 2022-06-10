@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  
+<div class="container-fluid mx-auto bg-dark" style="position:fixed; top:0;">
+  <div class="row">
+    <div class="col-12">
+      <footer><p class="text-light text-center mt-3"></p></footer>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+<div class="container">
+    <div class="col-md-4 mx-auto ">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4" >Selamat Datang</h1>
+                                </div>
+                                <% if (messages.error) { %> <%= messages.error %> <% } %>
+                               <form class="user" method="post" action="/login">
+                                <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna"
+                                placeholder="Nama Pengguna" >
+                                <input type="text" class="form-control form-control-user" name="kata_sandi" id="kata_sandi"
+                                placeholder="Kata Sandi" required>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="mb-3">
+                                <a href="/view/register" class="text-center">Buat Akun</a>
+                                </div>
+                                <div class="mb-3">
+                                <a href="/view/lupaKatasandi" class="text-center">Lupa Kata Sandi</a>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+</div>
