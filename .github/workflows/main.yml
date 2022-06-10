@@ -19,8 +19,8 @@ jobs:
         run: npm install sequelize-cli
       - name: Migrate DB
         run: npx sequelize db:migrate --env production
-      # - name: Seed DB
-      #   run: npx sequelize-cli db:seed:all --env production
+      - name: Seed DB
+        run: npx sequelize-cli db:seed:all --env production
       # - name: Test
       #   run: npm test
 
@@ -32,5 +32,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: "27310017-1b5a-4cf7-a479-3f5c1f23284f"
-          heroku_app_name: "thawing-beach-38939"
+          heroku_app_name: "alif-chapter08"
           heroku_email: "alifraihanzaa@gmail.com"

@@ -59,6 +59,7 @@ module.exports = {
       // return new user
       res.status(200).json({ message: 'Berhasil Membuat User Game', result: user });
     } catch (err) {
+      console.log(err)
       res.status(500).json({ message: 'Gagal Create User Game', err: err.message });
     }
     // Our register logic ends here

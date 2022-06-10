@@ -14,13 +14,13 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "afuoxmwingnsya",
-    "password": "9448d4093eadd28c96cfb9792ccb931d20382d3ec982f6ea880e96f965a3af5b",
-    "database": "dbdj83ropk72jp",
-    "host": "ec2-52-73-184-24.compute-1.amazonaws.com",
+    "username": "uobmwceaumnthb",
+    "password": "7509025b3ecd08b2c5a3e22a75ca456d3a2b930408b7df9f45b1224ffcc6311f",
+    "database": "d5bdn1r2725mmb",
+    "host": "ec2-54-157-16-196.compute-1.amazonaws.com",
     "dialect": "postgres",
     "port": "5432",
-    "url": "postgres://afuoxmwingnsya:9448d4093eadd28c96cfb9792ccb931d20382d3ec982f6ea880e96f965a3af5b@ec2-52-73-184-24.compute-1.amazonaws.com:5432/dbdj83ropk72jp",
+    "url": "postgres://uobmwceaumnthb:7509025b3ecd08b2c5a3e22a75ca456d3a2b930408b7df9f45b1224ffcc6311f@ec2-54-157-16-196.compute-1.amazonaws.com:5432/d5bdn1r2725mmb",
     "dialectOptions": {
       "ssl": { 
         "require": true,
